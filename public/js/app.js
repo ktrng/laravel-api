@@ -5336,13 +5336,13 @@ var App = function App() {
       setItems = _useState2[1];
 
   var getItems = function getItems() {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get('#').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/items').then(function (response) {
       setItems(response.data);
     });
   };
 
   var createItem = function createItem(addItem) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().post('#', addItem).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/items', addItem).then(function (response) {
       getItems();
     });
   };

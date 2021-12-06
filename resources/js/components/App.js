@@ -10,7 +10,7 @@ const App = () => {
 
   const getItems = () => {
     axios.get(
-      '#'
+      '/api/items'
     ).then((response) => {
       setItems(response.data)
     })
@@ -18,7 +18,7 @@ const App = () => {
 
   const createItem = (addItem) => {
     axios.post(
-      '#', addItem
+      '/api/items', addItem
     ).then((response) => {
       getItems()
     })
