@@ -40,6 +40,10 @@ const App = () => {
     })
   }
 
+  useEffect(() => {
+    getItems()
+  }, [])
+
 
   return (
     <main>
