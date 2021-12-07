@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 
-const Edit = () => {
-  // let [item, setItem] = useState({props.item})
+const Edit = (props) => {
+  let [item, setItem] = useState({...props.item})
+
+
+  const handleChange = (event) => {
+    setItem({...item, [event.target.name]: event.target.value})
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
     props.editItem(item)
   }
 
-  const handleChange = (event) => {
-    setItem({...item, [event.target.name]: event.target.value})
-  }
 
   return (
     <div>

@@ -26,7 +26,7 @@ const App = () => {
 
   const editItem = (updatedItem) => {
     axios.put(
-      '#' + updatedItem.id, updatedItem
+      '/api/items' + updatedItem.id, updatedItem
     ).then((response) => {
       getItems()
     })
@@ -34,7 +34,7 @@ const App = () => {
 
   const deleteItem = (event) => {
     axios.delete(
-      '#' + event.target.value
+      '/api/items' + event.target.value
     ).then((response) => {
       getItems()
     })
@@ -47,18 +47,23 @@ const App = () => {
       <Create
         createItem={createItem}
       />
-      <div className="index">
-        <div className="item">
-          <img src="https://www.sallybeauty.com/dw/image/v2/BCSM_PRD/on/demandware.static/-/Sites-SBS-SallyBeautySupply/default/dwb29f17ff/images/large/BTYSEC13.jpg?sw=1500&sh=1500&sfrm=png" /><br/>
-          Acetone<br/>
-          Quantity: 21<br/>
-          <a href="amazon.com">Buy</a>
-          <div>
-            <h1>EDIT GOES HERE</h1>
-            <button onClick={deleteItem} value="#">Delete</button>
+      {items.map((item) => {
+        return (
+          <div key={item.id}>
+            <img src={item.image} />
+            {items.name}<br/>
+            Quantity: {item.quantity}<br/>
+            <a href={item.link}>Buy</a>
+            <div>
+              <Edit
+                editItem={editItem}
+                item={item}
+              />
+              <button onClick={deleteItem}>Delete</button>
+            </div>
           </div>
-        </div>
-      </div>
+        )
+      })}
     </main>
   )
 }
