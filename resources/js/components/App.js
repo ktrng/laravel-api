@@ -46,7 +46,7 @@ const App = () => {
 
 
   return (
-    <main>
+    <div>
       <h1>Inventory App</h1>
       <Create
         createItem={createItem}
@@ -68,12 +68,13 @@ const App = () => {
           </div>
         )
       })}
-    </main>
+    </div>
   )
 }
 
 export default App;
 
-if (document.getElementById('app')) {
-    ReactDOM.render(<App />, document.getElementById('app'));
-}
+ReactDOM.render(
+    <App></App>,
+    document.querySelector('main')
+)
